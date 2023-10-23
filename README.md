@@ -1,0 +1,2 @@
+# scratch
+Golang Scratch
