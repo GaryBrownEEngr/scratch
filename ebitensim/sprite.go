@@ -157,7 +157,6 @@ func (s *sprite) DeleteSprite() {
 	s.sim.cmdChan <- update
 }
 
-
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -198,6 +197,16 @@ type spriteCmdDeleteAll struct {
 type spriteAddCostume struct {
 	costumeName string
 	img         image.Image
+}
+
+type cmdAddSound struct {
+	path      string
+	soundName string
+}
+
+type cmdPlaySound struct {
+	soundName string
+	volume    float64 // between 0 and 1.
 }
 
 func (s *sprite) minUpdate() {
