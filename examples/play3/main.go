@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/GaryBrownEEngr/scratch"
+	"github.com/GaryBrownEEngr/scratch/game"
 	"github.com/GaryBrownEEngr/scratch/models"
-	"github.com/GaryBrownEEngr/scratch/tools"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 func simStartFunc(sim models.Scratch) {
 	// sim.AddCostume(ebitensim.DecodeCodedSprite(ebitensim.TurtleImage), "t1")
 
-	textImage := tools.CreateTextBubble("abasdfasdfadsfasdfadsf\nc234", 16)
+	textImage := game.CreateTextBubble("abasdfasdfadsfasdfadsf\nc234", 16)
 	sim.AddCostume(textImage, "t1")
 
 	a := 0.0
