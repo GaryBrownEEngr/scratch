@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/GaryBrownEEngr/scratch"
-	"github.com/GaryBrownEEngr/scratch/game"
 	"github.com/GaryBrownEEngr/scratch/models"
+	"github.com/GaryBrownEEngr/scratch/sprite"
 	"github.com/GaryBrownEEngr/scratch/tools"
 )
 
@@ -28,7 +28,7 @@ func fileExists(path string) bool {
 }
 
 func simStartFunc(sim models.Scratch) {
-	sim.AddCostume(game.DecodeCodedSprite(game.TurtleImage), "t1")
+	sim.AddCostume(sprite.DecodeCodedSprite(sprite.TurtleImage), "t1")
 
 	if fileExists("jab.wav") {
 		sim.AddSound("jab.wav", "jab")
