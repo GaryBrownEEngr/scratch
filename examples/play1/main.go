@@ -7,18 +7,19 @@ import (
 	"os"
 	"time"
 
-	"github.com/GaryBrownEEngr/scratch/ebitensim"
+	"github.com/GaryBrownEEngr/scratch/game"
 	"github.com/GaryBrownEEngr/scratch/models"
+	"github.com/GaryBrownEEngr/scratch/sim"
 	"github.com/GaryBrownEEngr/scratch/tools"
 )
 
 func main() {
-	params := ebitensim.SimParams{
+	params := sim.SimParams{
 		Width:   1000,
 		Height:  1000,
 		ShowFPS: true,
 	}
-	ebitensim.StartSim(params, simStartFunc)
+	sim.StartSim(params, simStartFunc)
 }
 
 func fileExists(path string) bool {
@@ -27,7 +28,7 @@ func fileExists(path string) bool {
 }
 
 func simStartFunc(sim models.Sim) {
-	sim.AddCostume(ebitensim.DecodeCodedSprite(ebitensim.TurtleImage), "t1")
+	sim.AddCostume(game.DecodeCodedSprite(game.TurtleImage), "t1")
 
 	if fileExists("jab.wav") {
 		sim.AddSound("jab.wav", "jab")

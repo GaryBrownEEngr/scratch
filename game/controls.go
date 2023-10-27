@@ -1,4 +1,4 @@
-package ebitensim
+package game
 
 import (
 	"github.com/GaryBrownEEngr/scratch/models"
