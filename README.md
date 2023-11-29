@@ -13,3 +13,13 @@ Things to look into:
 ```bash
 GOOS=windows go build ./examples/fallingturtles/
 ```
+
+## Example
+
+### Double Pendulum
+
+```bash
+go run github.com/GaryBrownEEngr/scratch/examples/DoublePendulum@latest
+```
+
+![Example Picture](https://github.com/GaryBrownEEngr/scratch/blob/main/examples/DoublePendulum/DoublePendulum.gif)
