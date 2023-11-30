@@ -34,7 +34,7 @@ func NewTouchCollisionBody() *ClickOnBody {
 	return ret
 }
 
-func (s *ClickOnBody) AddCirleBody(x, y, radius float64) {
+func (s *ClickOnBody) AddCircleBody(x, y, radius float64) {
 	newC := circle{
 		x:      x,
 		y:      y,
