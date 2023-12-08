@@ -15,16 +15,12 @@ func TakeScreenshot(sim models.Scratch, outputPNGPath string) error {
 	return easygif.SaveImageToPNG(screenshot, outputPNGPath)
 }
 
-// Start this as a go routine to create a GIF of your creation.
-func CreateGif(
+func TakeScreenshotVideo(
 	sim models.Scratch,
 	delayBetweenScreenshots time.Duration,
-	delayBetweenGifFrames time.Duration,
-	outputGifFilePath string,
 	frameCount int,
-) {
+) []image.Image {
 	// Collect the images
-	fmt.Printf("GIF: %s: Collecting images\n", outputGifFilePath)
 	frames := make([]image.Image, 0, frameCount)
 	nextTime := time.Now()
 	for frameIndex := 0; frameIndex < frameCount; frameIndex++ {
@@ -35,8 +31,44 @@ func CreateGif(
 		time.Sleep(time.Until(nextTime))
 	}
 
+	return frames
+}
+
+// Start this as a go routine to create a GIF of your creation.
+func CreateGif(
+	sim models.Scratch,
+	delayBetweenScreenshots time.Duration,
+	delayBetweenGifFrames time.Duration,
+	outputGifFilePath string,
+	frameCount int,
+) {
+	// Collect the images
+	fmt.Printf("GIF: %s: Collecting images\n", outputGifFilePath)
+	frames := TakeScreenshotVideo(sim, delayBetweenScreenshots, frameCount)
+
 	fmt.Printf("GIF: %s: Processing images\n", outputGifFilePath)
 	err := easygif.EasyGifWrite(frames, delayBetweenGifFrames, outputGifFilePath)
+	if err != nil {
+		log.Printf("Error while running easygif.EasyGifWrite(): %v\n", err)
+	}
+
+	fmt.Printf("GIF: %s: Done\n", outputGifFilePath)
+}
+
+// Start this as a go routine to create a GIF of your creation.
+func CreateGifDithered(
+	sim models.Scratch,
+	delayBetweenScreenshots time.Duration,
+	delayBetweenGifFrames time.Duration,
+	outputGifFilePath string,
+	frameCount int,
+) {
+	// Collect the images
+	fmt.Printf("GIF: %s: Collecting images\n", outputGifFilePath)
+	frames := TakeScreenshotVideo(sim, delayBetweenScreenshots, frameCount)
+
+	fmt.Printf("GIF: %s: Processing images\n", outputGifFilePath)
+	err := easygif.EasyDitheredGifWrite(frames, delayBetweenGifFrames, outputGifFilePath)
 	if err != nil {
 		log.Printf("Error while running easygif.EasyGifWrite(): %v\n", err)
 	}
