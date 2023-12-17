@@ -41,7 +41,7 @@ func simStartFunc(sim models.Scratch) {
 
 func testScene(sim models.Scratch) {
 
-	broker := tools.NewBroker[string]()
+	broker := tools.NewBroker[string](100)
 
 	s := sim.AddSprite("mainTurtle")
 	s.Costume("t1")
