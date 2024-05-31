@@ -1,4 +1,4 @@
-package tools
+package scratch
 
 import (
 	"image/color"
